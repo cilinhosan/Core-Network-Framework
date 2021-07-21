@@ -122,6 +122,8 @@ function OnNetworkFrameworkEventToPlayer(targetPlayer, eventName, ...)
 
     eventData.targetPlayer = targetPlayer
 
+    table.insert(bufferTable, eventData)
+
 end
 
 Events.Connect("NetworkFrameworkToPlayer", OnNetworkFrameworkEventToPlayer)

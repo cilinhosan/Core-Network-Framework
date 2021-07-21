@@ -5,7 +5,7 @@ local currentMultiEventName
 
 function OnNetworkFrameworkMultiEvent(eventName, multiEventPartNumber, multiEventCount, ...)
 
-    eventPartArguments = {...}
+    local eventPartArguments = {...}
 
     -- if it is the metadata part
     if multiEventPartNumber == 0 then
@@ -17,7 +17,7 @@ function OnNetworkFrameworkMultiEvent(eventName, multiEventPartNumber, multiEven
     elseif multiEventPartNumber == 1 then
         -- store it inside the buffer
         multiEventBuffer[1] = eventPartArguments
-    
+
     -- if it one of the middle parts
     elseif multiEventPartNumber < currentMultiEventCount then
         multiEventBuffer[multiEventPartNumber] = eventPartArguments
@@ -31,7 +31,7 @@ function OnNetworkFrameworkMultiEvent(eventName, multiEventPartNumber, multiEven
         multiEventBuffer = {}
         currentMultiEventName = nil
         currentMultiEventCount = nil
-    
+
     end
 end
 
